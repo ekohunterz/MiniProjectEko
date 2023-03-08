@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="index.css" />
     <title>Revou Mini Project</title>
   </head>
   <body>
-    <header style="border-bottom: solid rgb(223, 223, 223) 2px">
-      <nav class="container">
-        <div class="navbar">
-          <img class="left-logo" src="logo.png" alt="Logo" />
-          <div class="nav-links">
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <img class="left-logo" src="img/logo.png" alt="Logo" />
+          <div class="menu">
             <a class="menu-item" href="#hero">Home</a>
             <a class="menu-item" href="#packages">Our Packages</a>
-            <a class="menu-item" href="#">Call Us</a>
+            <a class="menu-item" href="#call-us">Call Us</a>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
 
     <main>
@@ -31,7 +34,9 @@
         <div class="container">
           <div class="about-contact">
             <div class="about">
-              <img class="about-img" src="kyoto.jpg" alt="" />
+              <img class="img-slideshow" src="img/kyoto.jpg" alt="" />
+              <img class="img-slideshow" src="img/bali.jpg" alt="" />
+              <img class="img-slideshow" src="img/bandung.jpeg" alt="" />
               <div class="about-content">
                 <div class="content-caption">
                   <p>"Liburan jadi menyenangkan bersama Travel Agentku"</p>
@@ -85,7 +90,11 @@
                     terima
                   </p>
                 </div>
-                <form action="">
+                <form
+                  name="message-form"
+                  onsubmit="return validateForm()"
+                  action=""
+                >
                   <div class="input">
                     <label for="">Your Name:</label>
                     <input
@@ -99,7 +108,7 @@
                     <label for="">Email:</label>
                     <input
                       class="form"
-                      type="email"
+                      type="text"
                       name="email"
                       placeholder="example@gmail.com"
                     />
@@ -107,14 +116,33 @@
                   <div class="input">
                     <label for="">What are you interseted in:</label>
                     <select class="form" name="interest">
-                      <option selected hidden>Select option</option>
-                      <option>A</option>
-                      <option>B</option>
-                      <option>C</option>
+                      <option value="" selected hidden>Select option</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
                     </select>
                   </div>
                   <input class="button" type="submit" value="Send" />
                 </form>
+                <script>
+                  function validateForm() {
+                    var name = document.forms["message-form"]["name"].value;
+                    var email = document.forms["message-form"]["email"].value;
+                    var interest =
+                      document.forms["message-form"]["interest"].value;
+
+                    if (name == "") {
+                      alert("Nama Tidak Boleh Kosong");
+                      return false;
+                    } else if (email == "") {
+                      alert("Email Tidak Boleh Kosong");
+                      return false;
+                    } else if (interest == "") {
+                      alert("Opsi Tidak Boleh Kosong");
+                      return false;
+                    }
+                  }
+                </script>
               </div>
             </div>
           </div>
@@ -133,7 +161,7 @@
           <div class="package-content">
             <div class="content-package">
               <div class="package-img">
-                <img src="http://placekitten.com/50/50" alt="" />
+                <img src="img/gps.png" alt="" />
               </div>
               <div class="package-info">
                 <h4>Bali</h4>
@@ -145,7 +173,7 @@
             </div>
             <div class="content-package">
               <div class="package-img">
-                <img src="http://placekitten.com/50/50" alt="" />
+                <img src="img/gps.png" alt="" />
               </div>
               <div class="package-info">
                 <h4>Japan</h4>
@@ -157,7 +185,7 @@
             </div>
             <div class="content-package">
               <div class="package-img">
-                <img src="http://placekitten.com/50/50" alt="" />
+                <img src="img/gps.png" alt="" />
               </div>
               <div class="package-info">
                 <h4>Singapore</h4>
@@ -172,7 +200,7 @@
           <div class="package-content">
             <div class="content-package">
               <div class="package-img">
-                <img src="http://placekitten.com/50/50" alt="" />
+                <img src="img/gps.png" alt="" />
               </div>
               <div class="package-info">
                 <h4>Bandung</h4>
@@ -184,7 +212,7 @@
             </div>
             <div class="content-package">
               <div class="package-img">
-                <img src="http://placekitten.com/50/50" alt="" />
+                <img src="img/gps.png" alt="" />
               </div>
               <div class="package-info">
                 <h4>Surabaya</h4>
@@ -196,7 +224,7 @@
             </div>
             <div class="content-package">
               <div class="package-img">
-                <img src="http://placekitten.com/50/50" alt="" />
+                <img src="img/gps.png" alt="" />
               </div>
               <div class="package-info">
                 <h4>Third Feature</h4>
@@ -230,7 +258,7 @@
 
   <footer>
     <div class="footer-img">
-      <img class="left-logo" src="logo.png" alt="Logo" /> Travelku
+      <img class="left-logo" src="img/logo.png" alt="Logo" /> Travelku
     </div>
     <div class="footer-terms">
       <p>Term of Services</p>
@@ -239,3 +267,26 @@
     <p>© 2023</p>
   </footer>
 </html>
+
+<script>
+  var slideIndex = 1;
+  showdivs(slideIndex);
+  function plusDivs(n) {
+    showdivs((slideIndex += n));
+  }
+
+  function showdivs(n) {
+    var i;
+    var imglist = document.getElementsByClassName("img-slideshow");
+    if (n > imglist.length) slideIndex = 1;
+    else if (n < 1) slideIndex = imglist.length;
+
+    for (i = 0; i < imglist.length; i++) {
+      imglist[i].style.display = "none";
+    }
+    imglist[slideIndex - 1].style.display = "block";
+  }
+  setInterval(() => {
+    plusDivs(1);
+  }, 1000);
+</script>
